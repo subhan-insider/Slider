@@ -1,5 +1,6 @@
 # Slider
 A simple slider for desktop, mobile and tablet. Tested on chrome, firefox, safari, internet explorer, android browser and mobile safari.
+The slider can be used with arrow keys, mouse drags and next/prev buttons.
 
 ## Getting Started
 
@@ -8,7 +9,7 @@ Add this code to free js if you are using this in multiple places.
 ### Prerequisites
 
 You are going to have to create the following HTML structure:
-
+(The class names are arbitrary and can be named as you wish)
 ```
 <div class="slider">
     <div class="conent">
@@ -18,9 +19,9 @@ You are going to have to create the following HTML structure:
     </div>
 </div>
 ```
-The class names are arbitrary and can be named as you wish.
 
 You are going to have to add some CSS for your classes. *These are required*
+(The class names in the above css sample corresponds with the class names in the HTML sample above. So make sure to match the class names in your code)
 ```
 .content {
     position: relative;
@@ -35,9 +36,19 @@ You are going to have to add some CSS for your classes. *These are required*
     overflow: hidden;
 }
 ```
-The class names in the above css sample corresponds with the class names in the HTML sample above. So make sure to match the class names in your code. 
-
-
+If you wish to add next/prev buttons to the slider, you can add them as so:
+( If you are using different class names for the buttons, pass them into the options object, which is mentioned below )
+```
+<div class="slider">
+    <div class="ins-next"> > </div>
+    <div class="ins-prev"> < </div>
+    <div class="conent">
+        <div class="pages"> SLIDE </div>
+        <div class="pages"> SLIDE </div>
+         <div class="pages"> SLIDE </div>
+    </div>
+</div>
+```
 ### Installing
 
 Initializing the slider is simple:
@@ -52,7 +63,6 @@ sQuery( ‘.slider’ ).slider({
   destroyOnInit: true
 });
 ```
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Options
 
