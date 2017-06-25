@@ -77,9 +77,14 @@ debounceTime:500 /*debouce delay for the next and prev buttons (default = 400ms)
 slideTime:200 /*time of slide (ms) */
 nextClass: ‘ins-next-arrow’ /*next arrow class*/
 prevClass: ‘prev-next-arrow’ /*previous arrow class*/
+disableClass: 'ins-disabled-this' /* disbale arrow class (default = ins-arrow-disabled) */
 destroyOnInit: true   /* unbind all touch, mouse, key events before initing the slider. Don’t use if using multiple sliders on the same page */
 ```
 
+## Extras
+
+* Every active slide gets the class of 'active'
+* The arrow keys gets 'ins-arrow-disabled' class by default (can be changed with options) when the start or the end of slider is reached
 
 ## Built With
 
