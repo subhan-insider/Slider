@@ -84,7 +84,7 @@ destroyOnInit: true   /* unbind all touch, mouse, key events before initing the 
 ## Extras
 
 * Every active slide gets the class of 'active'
-* The arrow keys gets 'ins-arrow-disabled' class by default (can be changed with options) when the start or the end of slider is reached
+* The arrow buttons gets 'ins-arrow-disabled' class by default (can be changed with options) when the start or the end of slider is reached
 
 ## Built With
 
