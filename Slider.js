@@ -7,7 +7,8 @@
     var PagesSlider = function (slider, options) {  
         options = options || {};
         //options
-        this.slideCount = options.slideCount || this.activeSlidesCount; this.sensitivity = options.sensitivity || 5;
+        this.slideCount = options.slideCount || this.activeSlidesCount; 
+        this.sensitivity = options.sensitivity || 5;
         this.nextClass = options.nextClass || 'ins-next';
         this.prevClass = options.prevClass || 'ins-prev';
         this.debounceTime = options.debounceTime || 0;
