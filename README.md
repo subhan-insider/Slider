@@ -20,8 +20,8 @@ You are going to have to create the following HTML structure:
 </div>
 ```
 
-You are going to have to add some CSS for your classes. *These are required*
-(The class names in the above css sample corresponds with the class names in the HTML sample above. So make sure to match the class names in your code)
+You are going to have to add some CSS for your classes. *These are required* :
+(The class names in the following css sample corresponds with the class names in the HTML sample above. So make sure to match the class names in your code)
 ```
 .content {
     position: relative;
@@ -40,8 +40,8 @@ If you wish to add next/prev buttons to the slider, you can add them as so:
 ( If you are using different class names for the buttons, pass them into the options object, which is mentioned below )
 ```
 <div class="slider">
-    <div class="ins-next"> > </div>
-    <div class="ins-prev"> < </div>
+    <div class="ins-next"> > </div> /*can be floated right*/
+    <div class="ins-prev"> < </div> /*can be floated left*/
     <div class="conent">
         <div class="pages"> SLIDE </div>
         <div class="pages"> SLIDE </div>
@@ -66,8 +66,8 @@ sQuery( ‘.slider’ ).slider({
 
 ## Options
 
-Here is a list of the options you can use to customize your slider
-
+Here is a list of the options you can use to customize your slider:
+(They are entirely optional. The options that are critical have default values)
 ```
 activeSlidesCount: 5  /*Active slides visible to the user  (default= fills the available width)*/
 slideCount:3 / *Number of slides to slide at a time (default=activeSlidesCount) */
