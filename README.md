@@ -85,6 +85,7 @@ destroyOnInit: true   /* unbind all touch, mouse, key events before initing the 
 
 * Every active slide gets the class of 'active'
 * The arrow buttons gets 'ins-arrow-disabled' class by default (can be changed with options) when the start or the end of slider is reached
+* If you wish to reinit the slider more than once on the same page then make sure that *destroyOnInit* option is true
 
 ## Built With
 
