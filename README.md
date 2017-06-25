@@ -82,8 +82,8 @@ All contributions welcome. Open a pull request to do so.
 
 ## Authors
 
-* **Subhan Naeem** - 
+* **Subhan Naeem** 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License 
