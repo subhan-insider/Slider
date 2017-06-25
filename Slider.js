@@ -2,48 +2,6 @@
 (function( $ ){
 
     "use strict";
-
-    //STARTOF -- SLIDER
-    var PagesSlider = function (slider, options) {  
-        options = options || {};
-        //options
-        this.slideCount = options.slideCount || this.activeSlidesCount; 
-        this.sensitivity = options.sensitivity || 5;
-        this.nextClass = options.nextClass || 'ins-next';
-        this.prevClass = options.prevClass || 'ins-prev';
-        this.debounceTime = options.debounceTime || 0;
-        this.slideTime = options.slideTime || 400;
-        this.disableClass = options.disableClass || 'ins-arrow-disabled';
-
-
-        this.slider = slider;
-        this.content = slider.children().first();
-        this.currentIndex = 0;
-        //TODO: Add exception classes (via options) eg. this.content.children(':not(.clearfix)')
-        this.pages = this.content.children();
-
-        var firstSlide = this.pages.first(),
-            totalWidth = 0,
-            offsetWidth = options.offsetWidth || 0, //OPTIONS
-            marginRight = parseFloat(firstSlide.css('margin-right')) || 0,
-            marginLeft = parseFloat(firstSlide.css('margin-left')) || 0,
-            effectiveSlideWidth = firstSlide.width() + marginRight + marginLeft;
-
-        this.pages.each(function (index, page) {
-            totalWidth += $(page).width() + marginRight + marginLeft;
-        });
-        this.content.width(totalWidth  + offsetWidth);
-        this.activeSlidesCount = options.activeSlidesCount || Math.ceil(this.slider.width() / effectiveSlideWidth ); //OPTIONS
-        this.slider.width( effectiveSlideWidth * this.activeSlidesCount );
-
-
-        if( options.destroyOnInit ){ //OPTIONS
-            this.destroy();
-        }
-        this.bindEvents();
-        this.slideActive();
-
-    };
     var helpers = function(){
 
         var debounce = function( func, delay ){
@@ -59,17 +17,64 @@
                 }, delay);
             };
         }
-        
+
         var getBrowserEvent = function( event ){
             return (event.originalEvent.changedTouches && event.originalEvent.changedTouches[0].clientX) || event.originalEvent.pageX || event.clientX;
         }
 
+        var getTotalWidth = function( pages, marginLeft, marginRight ){
+            var totalWidth = 0;
+            pages.each(function (index, page) {
+                totalWidth += $(page).width() + marginRight + marginLeft;
+            });
+            return totalWidth;
+        }
+
         return {
             debounce: debounce,
-            getBrowserEvent: getBrowserEvent
+            getBrowserEvent: getBrowserEvent,
+            getTotalWidth: getTotalWidth
         }
     }()
 
+    //STARTOF -- SLIDER
+    var PagesSlider = function (slider, options) {  
+        options = options || {};
+
+
+        this.slider = slider;
+        this.content = slider.children().first();
+        this.currentIndex = 0;
+        //TODO: Add exception classes (via options) eg. this.content.children(':not(.clearfix)')
+        this.pages = this.content.children();
+
+        var firstSlide = this.pages.first(),
+            offsetWidth = options.offsetWidth || 0, //OPTIONS
+            marginRight = parseFloat(firstSlide.css('margin-right')) || 0,
+            marginLeft = parseFloat(firstSlide.css('margin-left')) || 0,
+            totalWidth = helpers.getTotalWidth( this.pages, marginLeft, marginRight ),
+            effectiveSlideWidth = firstSlide.width() + marginRight + marginLeft;
+
+        this.content.width(totalWidth  + offsetWidth);
+        this.activeSlidesCount = options.activeSlidesCount || Math.ceil(this.slider.width() / effectiveSlideWidth ); //OPTIONS
+        this.slider.width( effectiveSlideWidth * this.activeSlidesCount );
+
+        //options
+        this.slideCount = options.slideCount || this.activeSlidesCount; 
+        this.sensitivity = options.sensitivity || 5;
+        this.nextClass = options.nextClass || 'ins-next';
+        this.prevClass = options.prevClass || 'ins-prev';
+        this.debounceTime = options.debounceTime || 0;
+        this.slideTime = options.slideTime || 400;
+        this.disableClass = options.disableClass || 'ins-arrow-disabled';
+        this.destroyOnInit = options.destroyOnInit || false;
+
+        
+        this.bindEvents();
+        this.slideActive();
+
+    };
+    
     $.extend(PagesSlider.prototype, {
 
         bindEvents: function () {
@@ -81,7 +86,9 @@
             this._next = $.proxy(this.next, this);
             this._prev = $.proxy(this.prev, this);
             this._keyHandler = $.proxy(this.keyHandler, this);
+            this._destroy = $.proxy(this.destroy, this);
             
+            this.destroyOnInit ? this._destroy() : false;
 
             $('.' + this.nextClass).on('click',helpers.debounce(this._next,this.debounceTime));
             $('.' + this.prevClass).on('click', helpers.debounce(this._prev,this.debounceTime));
@@ -95,7 +102,6 @@
                 .on('keydown.insider',this._keyHandler);
 
         },
-
         
         destroy: function () {
             this.content
@@ -242,7 +248,3 @@
 
 
 }( sQuery ));
-
-
-
-
