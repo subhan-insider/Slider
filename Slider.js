@@ -18,7 +18,7 @@
             };
         }
 
-        var getBrowserEvent = function( event ){
+        var getClientX = function( event ){
             return (event.originalEvent.changedTouches && event.originalEvent.changedTouches[0].clientX) || event.originalEvent.pageX || event.clientX;
         }
 
@@ -32,7 +32,7 @@
 
         return {
             debounce: debounce,
-            getBrowserEvent: getBrowserEvent,
+            getClientX: getClientX,
             getTotalWidth: getTotalWidth
         }
     }()
@@ -116,13 +116,13 @@
 
         startDrag: function (event) {
             this.enableDrag = true;
-            this.dragStartX = helpers.getBrowserEvent( event );
+            this.dragStartX = helpers.getClientX( event );
         },
 
         doDrag: function (event) {
             if (this.enableDrag) {
                 var position = this.pages.eq(this.currentIndex).position();
-                var delta = helpers.getBrowserEvent( event ) - this.dragStartX;
+                var delta = helpers.getClientX( event ) - this.dragStartX;
 
                 this.content.css('transform', 'translate3d(' + (delta - position.left) + 'px, 0, 0)');
                 event.preventDefault();
@@ -133,7 +133,7 @@
             if (this.enableDrag) {
                 this.enableDrag = false;
 
-                var delta = helpers.getBrowserEvent( event ) - this.dragStartX;
+                var delta = helpers.getClientX( event ) - this.dragStartX;
                 if (Math.abs(delta) > this.slider.width() / this.sensitivity) {
                     if (delta < 0) {
                         this.next();
