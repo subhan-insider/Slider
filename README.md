@@ -4,7 +4,7 @@ The slider can be used with arrow keys, mouse drags and next/prev buttons.
 
 ## Getting Started
 
-Add this code to free js if you are using this in multiple places.
+Add src/Slider.js to free js if you are using this in multiple places.
 
 ### Prerequisites
 
