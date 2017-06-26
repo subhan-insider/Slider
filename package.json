@@ -4,7 +4,6 @@
   "description": "A simple customizable slider for desktop, mobile and tablet.",
   "main": "Slider.js",
   "scripts": {
-    "test": "test"
   },
   "repository": {
     "type": "git",
