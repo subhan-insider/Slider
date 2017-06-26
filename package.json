@@ -1,0 +1,28 @@
+{
+  "name": "slider",
+  "version": "1.0.0",
+  "description": "A simple customizable slider for desktop, mobile and tablet.",
+  "main": "Slider.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subhan-insider/Slider.git"
+  },
+  "keywords": [
+    "Insider",
+    "Slider",
+    "Optimus"
+  ],
+  "author": "Subhan Naeem",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/subhan-insider/Slider/issues"
+  },
+  "homepage": "https://github.com/subhan-insider/Slider#readme",
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "mocha": "^3.4.2"
+  }
+}

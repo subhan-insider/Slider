@@ -19,7 +19,7 @@
         }
 
         var getClientX = function( event ){
-            return (typeof event.originalEvent.changedTouches !=='undefined' && event.originalEvent.changedTouches[0].clientX) || event.originalEvent.pageX || event.clientX;
+            return (event.originalEvent.changedTouches && event.originalEvent.changedTouches[0].clientX) || event.originalEvent.pageX || event.clientX;
         }
 
         var getTotalWidth = function( pages, marginLeft, marginRight ){
