@@ -1,5 +1,5 @@
-function getTotalWidth ( pages, marginLeft, marginRight ){
-    if( !(pages instanceof jQuery) ){
+var getTotalWidth = function( pages, marginLeft, marginRight ){
+    if( !(pages instanceof $) && !(pages instanceof jQuery) ){
         throw new Error('A valid jQuery element was not passed as the first parameter');
     }
     if( typeof marginLeft !== 'number' || typeof marginRight !== 'number' ) {
@@ -12,3 +12,4 @@ function getTotalWidth ( pages, marginLeft, marginRight ){
     return totalWidth;
 
 }
+

@@ -96,6 +96,10 @@ destroyOnInit: true   /* unbind all touch, mouse, key events before initing the 
 
 All contributions welcome. Open a pull request to do so.
 
+## Future
+
+I'm writing unit tests as i get time
+
 ## Authors
 
 * **Subhan Naeem** 
