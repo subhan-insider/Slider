@@ -3,7 +3,7 @@ describe('Debounce', function() {
     before(function(){
         $('.fixture').remove();
     });
-    after(function(){
+    afterEach(function(){
         $('.fixture').remove();
     });
 
