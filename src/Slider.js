@@ -23,6 +23,12 @@
         }
 
         var getTotalWidth = function( pages, marginLeft, marginRight ){
+            if( !(pages instanceof $) && !(pages instanceof jQuery) ){
+                throw new Error('A valid jQuery element was not passed as the first parameter');
+            }
+            if( typeof marginLeft !== 'number' || typeof marginRight !== 'number' ) {
+                throw new Error('Margin paramters are not valid');
+            }
             var totalWidth = 0;
             pages.each(function (index, page) {
                 totalWidth += $(page).width() + marginRight + marginLeft;
@@ -69,12 +75,12 @@
         this.disableClass = options.disableClass || 'ins-arrow-disabled';
         this.destroyOnInit = options.destroyOnInit || false;
 
-        
+
         this.bindEvents();
         this.slideActive();
 
     };
-    
+
     $.extend(PagesSlider.prototype, {
 
         bindEvents: function () {
@@ -87,7 +93,7 @@
             this._prev = $.proxy(this.prev, this);
             this._keyHandler = $.proxy(this.keyHandler, this);
             this._destroy = $.proxy(this.destroy, this);
-            
+
             this.destroyOnInit ? this._destroy() : false;
 
             $('.' + this.nextClass).on('click',helpers.debounce(this._next,this.debounceTime));
@@ -102,7 +108,7 @@
                 .on('keydown.insider',this._keyHandler);
 
         },
-        
+
         destroy: function () {
             $('.' + this.nextClass).off('click');
             $('.' + this.prevClass).off('click');
@@ -181,16 +187,16 @@
                 // this.goToIndex(0)
                 this.current();
             } else {
-                
+
                 if( remainingSlides <= this.slideCount ){
                     nextIndex = this.currentIndex + remainingSlides;
                     $('.' + this.nextClass).addClass( this.disableClass );
                 }else{
-                   this.removeDisable();
+                    this.removeDisable();
                 }
                 this.goToIndex( nextIndex );
             }
-            
+
         },
 
         prev: function () {
