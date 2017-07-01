@@ -1,5 +1,5 @@
 function getTotalWidth ( pages, marginLeft, marginRight ){
-    if( !(pages instanceof jQuery) ){
+    if( !(pages instanceof jQuery) && !(pages instanceof sQuery) ){
         throw new Error('A valid jQuery element was not passed as the first parameter');
     }
     if( typeof marginLeft !== 'number' || typeof marginRight !== 'number' ) {
