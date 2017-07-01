@@ -83,15 +83,18 @@
             this._startDrag = $.proxy(this.startDrag, this);
             this._doDrag = $.proxy(this.doDrag, this);
             this._endDrag = $.proxy(this.endDrag, this);
-            this._next = $.proxy(this.next, this);
-            this._prev = $.proxy(this.prev, this);
             this._keyHandler = $.proxy(this.keyHandler, this);
-            this._destroy = $.proxy(this.destroy, this);
-            
-            this.destroyOnInit ? this._destroy() : false;
 
-            $('.' + this.nextClass).on('click',helpers.debounce(this._next,this.debounceTime));
-            $('.' + this.prevClass).on('click', helpers.debounce(this._prev,this.debounceTime));
+            var _next = $.proxy(this.next, this);
+            var _prev = $.proxy(this.prev, this);
+            var _destroy = $.proxy(this.destroy, this);
+            var _debounce = $.proxy( helpers.debounce, this );
+            
+            this.destroyOnInit ? _destroy() : false;
+
+            $('.' + this.nextClass).on('click',_debounce(_next,this.debounceTime));
+
+            $('.' + this.prevClass).on('click', _debounce(_prev,this.debounceTime));
 
             this.content
                 .on('mousedown.insider touchstart.insider', this._startDrag)
