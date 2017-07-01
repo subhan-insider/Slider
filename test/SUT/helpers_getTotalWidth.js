@@ -10,4 +10,5 @@ function getTotalWidth ( pages, marginLeft, marginRight ){
         totalWidth += $(page).width() + marginRight + marginLeft;
     });
     return totalWidth;
+
 }
